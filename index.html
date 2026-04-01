@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statify – NBA Player Explorer</title>
+    <meta name="description" content="Explore NBA players, teams, and conferences with Statify." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="brand">
+                <span class="brand-ball">🏀</span>
+                <div>
+                    <h1 id="appTitle" class="brand-title">Statify</h1>
+                    <p class="brand-sub">Your Ultimate NBA Player Explorer</p>
+                </div>
+            </div>
+            <div class="live-badge">● Live</div>
+        </div>
+    </header>
+
+    <!-- CONTROLS -->
+    <section class="controls-section">
+        <div class="controls-inner">
+
+            <!-- Search -->
+            <div class="search-wrap">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input id="searchInput" type="text" class="search-input" placeholder="Search players…"
+                    autocomplete="off" />
+            </div>
+
+            <!-- Conference Filter -->
+            <select id="conferenceFilter" class="control-select">
+                <option value="all">All Conferences</option>
+                <option value="East">East</option>
+                <option value="West">West</option>
+            </select>
+
+            <!-- Sort -->
+            <select id="sortOrder" class="control-select">
+                <option value="az">A → Z</option>
+                <option value="za">Z → A</option>
+            </select>
+
+        </div>
+
+        <!-- Result count -->
+        <p id="playerCount" class="result-count"></p>
+    </section>
+
+    <!-- PLAYERS GRID -->
+    <main class="main">
+        <div id="playersContainer" class="players-grid">
+            <!-- Player cards injected by JS -->
+        </div>
+
+        <!-- Empty state -->
+        <div id="emptyState" class="empty-state hidden">
+            <div class="empty-icon">🏀</div>
+            <h3>No players found</h3>
+            <p>Try a different search or filter</p>
+        </div>
+
+        <!-- Loading state -->
+        <div id="loadingState" class="loading-state">
+            <div class="spinner"></div>
+            <p>Fetching players…</p>
+        </div>
+    </main>
+
+    <!-- PAGINATION -->
+    <div id="pagination" class="pagination hidden">
+        <button id="prevBtn" class="page-btn" disabled>← Previous</button>
+        <span id="pageIndicator" class="page-indicator">Page 1</span>
+        <button id="nextBtn" class="page-btn">Next →</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Powered by <a href="https://www.balldontlie.io" target="_blank">Ball Don't Lie API</a> · Statify © 2024</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
