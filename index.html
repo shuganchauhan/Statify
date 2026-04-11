@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell page-shell-app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Statify</p>
+        <h1>Explore NBA Players</h1>
+        <p class="subtle">Search, sort, filter, paginate, and save favorites from one clean static page.</p>
+      </div>
+    </header>
+
+    <main class="app-layout">
+      <section class="panel controls-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Controls</p>
+            <h2>Find your player</h2>
+          </div>
+          <div class="tab-switcher" role="tablist" aria-label="Player views">
+            <button class="tab-button is-active" id="allPlayersTab" type="button" data-view="all" aria-selected="true">All Players</button>
+            <button class="tab-button" id="favoritesTab" type="button" data-view="favorites" aria-selected="false">Favorites</button>
+          </div>
+        </div>
+
+        <div class="controls-grid">
+          <label class="field">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Search by first or last name">
+          </label>
+
+          <label class="field">
+            <span>Sort</span>
+            <select id="sortSelect">
+              <option value="name-asc">Name (A-Z)</option>
+              <option value="name-desc">Name (Z-A)</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Team</span>
+            <select id="teamFilter">
+              <option value="">All teams</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel results-panel">
+        <div class="results-header">
+          <div>
+            <p class="eyebrow" id="resultsEyebrow">Live Results</p>
+            <h2 id="resultsTitle">All Players</h2>
+          </div>
+          <p class="results-meta" id="resultsMeta">Loading players...</p>
+        </div>
+
+        <div id="errorState" class="state-card error-state hidden" role="alert"></div>
+        <div id="loadingState" class="state-card loading-state hidden" aria-live="polite">
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Fetching players...</p>
+        </div>
+        <div id="emptyState" class="state-card hidden">
+          <h3>No results found</h3>
+          <p>Try a different search term, clear the team filter, or switch views.</p>
+        </div>
+
+        <div id="playerGrid" class="player-grid" aria-live="polite"></div>
+
+        <div class="pagination-bar">
+          <button id="prevBtn" class="button button-secondary" type="button">Previous</button>
+          <span id="pageIndicator">Page 1</span>
+          <button id="nextBtn" class="button" type="button">Next</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
